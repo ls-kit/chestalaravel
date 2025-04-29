@@ -21,18 +21,20 @@
                 <a href="/dashboard" class="block hover:text-yellow-300">🏠 Dashboard</a>
                 <a href="{{ route('profile.show') }}" class="block hover:text-yellow-300">👤 Profile</a>
                 <a href="/support" class="block hover:text-yellow-300">💬 Support</a>
+                <a href="{{ route('admin.users') }}" class="block hover:text-yellow-300">👥Users</a>
                 <a href="/roles" class="block hover:text-yellow-300">🛡️ Roles</a>
             </nav>
             <form method="POST" action="{{ route('logout') }}" class="mt-4">
                 @csrf
                 <button type="submit" class="block w-full text-left hover:text-yellow-300">
-                    🚪 Logout
+                    🔳 Logout
                 </button>
             </form>
         </aside>
 
         <!-- Main Content -->
         <main class="flex-1 p-8">
+
             @yield('content')
         </main>
 

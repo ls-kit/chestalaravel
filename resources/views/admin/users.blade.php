@@ -16,7 +16,7 @@
                         <select name="role" class="border p-2 rounded">
                             @foreach ($roles as $role)
                                 <option value="{{ $role->id }}"
-                                    {{ $user->roles->contains($role->id) ? 'selected' : '' }}>
+                                    {{ $user->roles->pluck('id')->first() == $role->id ? 'selected' : '' }}>
                                     {{ $role->name }}
                                 </option>
                             @endforeach

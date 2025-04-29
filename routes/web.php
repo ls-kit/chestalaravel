@@ -24,12 +24,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('supports', SupportController::class);
 
     // Role Management
-    Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
-    Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+    Route::get('/roles', [RoleController::class, 'index'])->middleware('admin')->name('roles.index');
+    Route::post('/roles', [RoleController::class, 'store'])->middleware('admin')->name('roles.store');
 
     // Admin User Management (optional later)
     Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
-    Route::post('/admin/{user}', [AdminController::class, 'assignRole'])->name('admin.users.assignRole');
+    Route::post('/admin/{user}', [AdminController::class, 'assignRole'])->middleware('admin')->name('admin.users.assignRole');
 });
 
 require __DIR__.'/auth.php';

@@ -35,7 +35,11 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class,'role_user');
+        return $this->belongsToMany(Role::class);
+    }
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
     }
     /**
      * Get the attributes that should be cast.
