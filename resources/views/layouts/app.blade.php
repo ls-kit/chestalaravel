@@ -20,7 +20,7 @@
             <nav class="space-y-4">
                 <a href="/dashboard" class="block hover:text-yellow-300">🏠 Dashboard</a>
                 <a href="{{ route('profile.show') }}" class="block hover:text-yellow-300">👤 Profile</a>
-                <a href="/support" class="block hover:text-yellow-300">💬 Support</a>
+                <a href="{{ route('support.index') }}" class="block hover:text-yellow-300">💬 Support</a>
                 <a href="{{ route('admin.users') }}" class="block hover:text-yellow-300">👥Users</a>
                 <a href="/roles" class="block hover:text-yellow-300">🛡️ Roles</a>
             </nav>

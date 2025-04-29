@@ -41,6 +41,16 @@ class User extends Authenticatable
     {
         return $this->roles()->where('name', $role)->exists();
     }
+    // for support message system
+    public function supportMessages()
+    {
+        return $this->hasMany(SupportMessage::class);
+    }
+
+    public function supportReplies()
+    {
+        return $this->hasMany(SupportReply::class);
+    }
     /**
      * Get the attributes that should be cast.
      *
