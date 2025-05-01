@@ -13,6 +13,9 @@
                 <p>{{ $user->email }}</p>
             </div>
             <div>
+                <p class="font-bold">Role: <span class="font-semibold">{{ $user->roles->pluck('name')->first() }}</span></p>
+            </div>
+            <div>
                 <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10"
                     href="{{ route('profile.edit') }}">Update Profile</a>
             </div>

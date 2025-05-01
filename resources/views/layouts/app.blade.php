@@ -21,8 +21,12 @@
                 <a href="/dashboard" class="block hover:text-yellow-300">🏠 Dashboard</a>
                 <a href="{{ route('profile.show') }}" class="block hover:text-yellow-300">👤 Profile</a>
                 <a href="{{ route('support.index') }}" class="block hover:text-yellow-300">💬 Support</a>
-                <a href="{{ route('admin.users') }}" class="block hover:text-yellow-300">👥Users</a>
-                <a href="/roles" class="block hover:text-yellow-300">🛡️ Roles</a>
+
+                @if (auth()->user()->hasRole('admin'))
+                    <a href="{{ route('admin.users') }}" class="block hover:text-yellow-300">👥Users</a>
+                    <a href="/roles" class="block hover:text-yellow-300">🛡️ Roles</a>
+                @endif
+
             </nav>
             <form method="POST" action="{{ route('logout') }}" class="mt-4">
                 @csrf

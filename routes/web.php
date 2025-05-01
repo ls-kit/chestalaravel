@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/roles', [RoleController::class, 'index'])->middleware('admin')->name('roles.index');
     Route::post('/roles', [RoleController::class, 'store'])->middleware('admin')->name('roles.store');
     // Admin User Management
-    Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
+    Route::get('/admin/users', [AdminController::class, 'index'])->middleware('admin')->name('admin.users');
     Route::post('/admin/{user}', [AdminController::class, 'assignRole'])->middleware('admin')->name('admin.users.assignRole');
 });
 require __DIR__.'/auth.php';

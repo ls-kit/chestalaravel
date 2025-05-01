@@ -13,7 +13,8 @@
                     </div>
                     <form method="POST" action="{{ route('admin.users.assignRole', $user->id) }}">
                         @csrf
-                        <select name="role" class="border p-2 rounded">
+                        <select name="role" class="border px-8 py-2 rounded">
+                            <option value="">Select a role</option>
                             @foreach ($roles as $role)
                                 <option value="{{ $role->id }}"
                                     {{ $user->roles->pluck('id')->first() == $role->id ? 'selected' : '' }}>
@@ -21,7 +22,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        <button type="submit" class="ml-2 bg-blue-500 text-white px-3 py-1 rounded">Assign</button>
+                        <button type="submit" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded">Assign</button>
                     </form>
                 </div>
             @endforeach

@@ -12,7 +12,9 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     public function show(){
+
         $user = Auth::user();
+        // $roles = $user->roles->pluck('name')->first();
         return view('profile.show', compact('user'));
     }
     /**

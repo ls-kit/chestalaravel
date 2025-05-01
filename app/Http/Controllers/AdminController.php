@@ -11,7 +11,9 @@ class AdminController extends Controller
 {
     public function index() {
         // dd(auth()->user());
-
+        // if(!auth()->user()->hasRole('admin')) {
+        //     return redirect()->to('dashboard')->with('error', 'You do not have permission to see users.');
+        // }
         $users = User::all();
         $roles = Role::all();
 
@@ -20,8 +22,8 @@ class AdminController extends Controller
 
     public function assignRole(Request $request, User $user) {
         // dd($user);
-        // if (!auth()->user()->hasRole('Admin')) {
-        //     abort(403);
+        // if(!auth()->user()->hasRole('admin')) {
+        //     return redirect()->back()->with('error', 'You do not have permission to assign roles.');
         // }
         $role = Role::findOrFail($request->role);
         $user->roles()->sync([$role->id]);
