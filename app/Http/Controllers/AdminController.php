@@ -25,6 +25,14 @@ class AdminController extends Controller
         // if(!auth()->user()->hasRole('admin')) {
         //     return redirect()->back()->with('error', 'You do not have permission to assign roles.');
         // }
+        // Prevent admin from changing their own role
+        if (auth()->id() === $user->id) {
+            return back()->with('error', 'You cannot change your own role.');
+        }
+        // Validate the role input
+        $request->validate([
+            'role' => 'required|exists:roles,id',
+        ]);
         $role = Role::findOrFail($request->role);
         $user->roles()->sync([$role->id]);
         return back()->with('success', 'Role assigned successfully.');

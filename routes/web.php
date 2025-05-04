@@ -22,10 +22,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/support', [SupportController::class, 'store'])->name('support.store');
     Route::post('/support/{message}/reply', [SupportController::class, 'reply'])->name('support.reply');
     // Role Management
-    Route::get('/roles', [RoleController::class, 'index'])->middleware('admin')->name('roles.index');
-    Route::post('/roles', [RoleController::class, 'store'])->middleware('admin')->name('roles.store');
+
+    Route::get('/roles', [RoleController::class, 'index'])->middleware('role:admin')->name('roles.index');
+    Route::post('/roles', [RoleController::class, 'store'])->middleware('role:admin')->name('roles.store');
     // Admin User Management
-    Route::get('/admin/users', [AdminController::class, 'index'])->middleware('admin')->name('admin.users');
-    Route::post('/admin/{user}', [AdminController::class, 'assignRole'])->middleware('admin')->name('admin.users.assignRole');
+    Route::get('/admin/users', [AdminController::class, 'index'])->middleware('role:admin,editor,moderator')->name('admin.users');
+    Route::post('/admin/{user}', [AdminController::class, 'assignRole'])->middleware('role:admin')->name('admin.users.assignRole');
 });
 require __DIR__.'/auth.php';

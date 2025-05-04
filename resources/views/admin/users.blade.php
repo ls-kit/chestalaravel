@@ -3,7 +3,11 @@
 @section('content')
     <div class="max-w-5xl mx-auto mt-10">
         <h1 class="text-2xl font-bold mb-6">Manage Users</h1>
-
+        @if (session('error'))
+            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="bg-white p-6 rounded shadow">
             @foreach ($users as $user)
                 <div class="border-b py-4 flex justify-between items-center">

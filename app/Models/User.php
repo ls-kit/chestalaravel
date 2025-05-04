@@ -37,10 +37,26 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
-    public function hasRole($role)
+    public function hasRole($roles)
     {
-        return $this->roles()->where('name', $role)->exists();
+        if (is_array($roles)) {
+            // Check if the user has any of the roles in the array
+            return $this->roles()->whereIn('name', $roles)->exists();
+        }
+
+        // Check if the user has a single role
+        return $this->roles()->where('name', $roles)->exists();
     }
+    public function hasPermission($permission)
+    {
+        foreach ($this->roles as $role) {
+            if ($role->permissions->where('name', $permission)->exists()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // for support message system
     public function supportMessages()
     {

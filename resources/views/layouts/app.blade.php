@@ -23,9 +23,12 @@
                 <a href="{{ route('support.index') }}" class="block hover:text-yellow-300">💬 Support</a>
 
                 @if (auth()->user()->hasRole('admin'))
-                    <a href="{{ route('admin.users') }}" class="block hover:text-yellow-300">👥Users</a>
                     <a href="/roles" class="block hover:text-yellow-300">🛡️ Roles</a>
                 @endif
+                @if (auth()->user()->hasRole(['admin', 'moderator']))
+                    <a href="{{ route('admin.users') }}" class="block hover:text-yellow-300">👥Users</a>
+                @endif
+
 
             </nav>
             <form method="POST" action="{{ route('logout') }}" class="mt-4">
