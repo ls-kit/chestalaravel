@@ -8,6 +8,11 @@
                 {{ session('error') }}
             </div>
         @endif
+        @if (session('success'))
+            <div class="bg-blue-500 text-white p-4 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="bg-white p-6 rounded shadow">
             @foreach ($users as $user)
                 <div class="border-b py-4 flex justify-between items-center">

@@ -56,6 +56,10 @@ class User extends Authenticatable
         }
         return false;
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
     // for support message system
     public function supportMessages()

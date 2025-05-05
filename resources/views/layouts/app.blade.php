@@ -23,12 +23,14 @@
                 <a href="{{ route('support.index') }}" class="block hover:text-yellow-300">💬 Support</a>
 
                 @if (auth()->user()->hasRole('admin'))
-                    <a href="/roles" class="block hover:text-yellow-300">🛡️ Roles</a>
+                    <a href="{{ route('roles.index') }}" class="block hover:text-yellow-300">🛡️ Roles</a>
+                    <a href="{{ route('permissions.index') }}" class="block hover:text-yellow-300">🛡️ Permissions</a>
                 @endif
                 @if (auth()->user()->hasRole(['admin', 'moderator']))
                     <a href="{{ route('admin.users') }}" class="block hover:text-yellow-300">👥Users</a>
                 @endif
-
+                <a href="{{ route('officers.index') }}" class="block hover:text-green-600"> 🎭Officers</a>
+                <a href="{{ route('divisions.index') }}" class="block hover:text-blue-600">🎪Division</a>
 
             </nav>
             <form method="POST" action="{{ route('logout') }}" class="mt-4">
